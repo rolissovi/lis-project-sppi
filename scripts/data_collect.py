@@ -5,7 +5,7 @@ import pandas as pd
 from pymongo import MongoClient
 
 print("Hi. Commit it")
-print("Hi. Commit it")
+
 
 print("Hi. Commit it")
 print("Hi. Commit it")
