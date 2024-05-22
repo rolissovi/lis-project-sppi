@@ -15,7 +15,7 @@ def mock_response():
 @patch('requests.post')
 def test_get_data_from_auto_ru(mock_get, mock_response):
     mock_get.return_value = mock_response
-
+    #
     URL = "https://auto.ru/-/ajax/desktop/listing/"
     COOKIE = os.getenv('COOKIE')
     HEADERS = '''
