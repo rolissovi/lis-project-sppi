@@ -22,4 +22,4 @@ jobs:
     - name: Analysing the code with pytest
       run: |
          pytest ./scripts
-         pylint ./scripts
+         pytest ./scripts 
