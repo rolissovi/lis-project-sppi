@@ -43,6 +43,7 @@ for header in HEADERS:
     key, value = header.split(': ')
     dict_header[key] = value
 
+
 # Парсим данные
 offers = []
 for i in range(1, 11):
@@ -143,10 +144,8 @@ df = pd.DataFrame({
 # # Выгружаем данные в MongoDB
 # data_dict = df.to_dict("records")
 # carsCollection.insert_many(data_dict)
-
-
+#
 # Сохраняем в эксель и csv
-# df.to_excel('JETOUR.xlsx')
 df.to_csv(f'AUDI.CSV')
 
 # Очищаем JSON

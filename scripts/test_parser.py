@@ -4,6 +4,7 @@ from unittest.mock import patch
 import requests
 
 
+
 @pytest.fixture
 def mock_response():
     response = requests.Response()
@@ -58,7 +59,5 @@ def test_get_data_from_auto_ru(mock_get, mock_response):
         data = response.json()
         if 'offers' in data:
             offers.extend(data['offers'])
-
     statcod = response.status_code
-
     assert statcod == 200
