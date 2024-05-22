@@ -13,6 +13,8 @@ from pymongo import MongoClient
 # Считываем JSON с сайта
 URL = "https://auto.ru/-/ajax/desktop/listing/"
 
+
+#
 COOKIE = os.getenv('COOKIE')
 HEADERS = '''
 Host: auto.ru
