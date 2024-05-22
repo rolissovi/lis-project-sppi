@@ -1,6 +1,6 @@
-# This pipline runs pylint 
+# This pipline runs pytest
 
-name: Pylint
+name: Pytest
 
 on: [pull_request] 
 
@@ -18,9 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        main
         pip install requirements.txt
-    - name: Analysing the code
+    - name: Analysing the code with pytest
       run: |
-         pytest ./scripts
+         pytest ./scripts 
