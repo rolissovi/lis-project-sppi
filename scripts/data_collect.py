@@ -4,9 +4,6 @@ import statistics
 import pandas as pd
 from pymongo import MongoClient
 
-print("Hi. Commit it")
-print("Hi. Commit it")
-print("Hi. Commit it")
 def amount_statistics(params):
     print("Среднее занчение: ", statistics.mean(params))
     print("Минимальное значение: ", min(params))
