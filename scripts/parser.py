@@ -4,11 +4,11 @@ import pandas as pd
 import requests
 from pymongo import MongoClient
 
-# Подключаемся к базе данных MongoDB
-client = MongoClient('127.0.0.1', 27017)
-db_name = 'auto'
-db = client[db_name]
-carsCollection = db.cars
+# # Подключаемся к базе данных MongoDB
+# client = MongoClient('127.0.0.1', 27017)
+# db_name = 'auto'
+# db = client[db_name]
+# carsCollection = db.cars
 
 # Считываем JSON с сайта
 URL = "https://auto.ru/-/ajax/desktop/listing/"
@@ -47,7 +47,7 @@ for header in HEADERS:
 offers = []
 for i in range(1, 11):
     params = {
-        "catalog_filter": [{"mark": f"BMW"}],
+        "catalog_filter": [{"mark": f"AUDI"}],
         "section": "all",
         "category": "cars",
         "page": i,
@@ -140,14 +140,14 @@ df = pd.DataFrame({
 
 })
 
-# Выгружаем данные в MongoDB
-data_dict = df.to_dict("records")
-carsCollection.insert_many(data_dict)
+# # Выгружаем данные в MongoDB
+# data_dict = df.to_dict("records")
+# carsCollection.insert_many(data_dict)
 
 
 # Сохраняем в эксель и csv
 # df.to_excel('JETOUR.xlsx')
-df.to_csv(f'BMW.CSV')
+df.to_csv(f'AUDI.CSV')
 
 # Очищаем JSON
 with open("temp.json", "w") as f:
