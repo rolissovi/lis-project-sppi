@@ -18,7 +18,7 @@ def unique_data(alldata):
             udata.append(item)
     return udata
 
-
+#
 def duplicates_counter(lst):
     counter = {}
     for item in lst:
