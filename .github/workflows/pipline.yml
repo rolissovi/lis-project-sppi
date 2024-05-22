@@ -18,7 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        pip install pytest
-    - name: Analysing the code with pylint
+        pip install requirements.txt
+    - name: Analysing the code with pytest
       run: |
-         pylint ./scripts 
+         pytest ./scripts 
