@@ -1,4 +1,4 @@
-# This pipline runs pylint 
+# This pipline runs pytest
 
 name: Pytest
 
@@ -19,6 +19,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-    - name: Analysing the code
+    - name: Analysing the code with pytest
       run: |
-         pytest ./scripts
+         pytest ./scripts 
