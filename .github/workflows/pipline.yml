@@ -1,6 +1,6 @@
-# This pipline runs pylint 
+# This pipline runs pytest
 
-name: Pylint
+name: Pytest
 
 on: [pull_request] 
 
