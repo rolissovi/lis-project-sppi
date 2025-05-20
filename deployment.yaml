@@ -1,0 +1,34 @@
+kind: Deployment
+metadata:
+  name: program
+  labels:
+    app: program
+spec:
+  selector:
+    matchLabels:
+      app: program
+  template:
+    metadata:
+      labels:
+        app: program
+    spec:
+      containers:
+      - name: users_service
+        image: users_service
+        ports:
+        - containerPort: 8001
+
+      - name: works_service
+        image: works_service
+        ports:
+        - containerPort: 8002
+
+      - name: predict_service
+        image: predict_service
+        ports:
+        - containerPort: 8003
+
+      - name: chat_service
+        image: chat_service
+        ports:
+        - containerPort: 8004

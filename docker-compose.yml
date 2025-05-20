@@ -1,0 +1,86 @@
+version: '3.7'
+
+services:
+  users_service:
+    build: ./app/api/users_service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./users_service/:/app/
+    ports:
+      - 8001:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgres@users/users
+      - USERS_SERVICE_HOST_URL=http://users_service:8000/api/v1/users/
+
+  users_db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data_users:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=users
+
+  works_service:
+    build: ./works_service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./works_service/:/app/
+    ports:
+      - 8002:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgres@works/works
+
+  works_db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data_works:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=works
+
+  predict_service:
+    build: ./predict_service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./predict_service/:/app/
+    ports:
+      - 8003:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgres@predict/predict
+
+  predict_db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data_predict:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=predict
+
+  chat_service:
+    build: ./chat_service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./chat_service/:/app/
+    ports:
+      - 8004:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgres@chat/chat
+
+  chat_db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data_chat:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=chat
+
+
+volumes:
+  postgres_data_users:
+  postgres_data_works:
+  postgres_data_predict:
+  postgres_data_chat:
